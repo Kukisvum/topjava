@@ -1,5 +1,10 @@
 package ru.javawebinar.topjava.repository.inmemory;
 
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.stereotype.Repository;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
 import ru.javawebinar.topjava.model.AbstractBaseEntity;
 
 import java.util.Collection;
@@ -8,6 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static ru.javawebinar.topjava.model.AbstractBaseEntity.START_SEQ;
+
 
 public class InMemoryBaseRepository<T extends AbstractBaseEntity> {
 
