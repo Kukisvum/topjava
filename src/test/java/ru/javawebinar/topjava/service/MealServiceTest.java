@@ -1,6 +1,8 @@
 package ru.javawebinar.topjava.service;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExternalResource;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
@@ -13,6 +15,7 @@ import ru.javawebinar.topjava.util.exception.NotFoundException;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.util.Date;
 
 import static org.junit.Assert.assertThrows;
 import static ru.javawebinar.topjava.MealTestData.*;
@@ -29,6 +32,30 @@ public class MealServiceTest {
 
     @Autowired
     private MealService service;
+
+    @Rule
+    public final ExternalResource externalResource = new ExternalResource() {
+        Long stDate;
+        @Override
+        protected void before() throws Throwable {
+            stDate = new Date().getTime();
+            System.out.println("Start of Method");
+        };
+
+
+
+        @Override
+        protected void after() {
+            String methodName = new Object() {}
+                    .getClass()
+                    .getEnclosingMethod()
+                    .getName();
+            Long end = new Date().getTime();
+
+            System.out.println("The time of test = " + methodName+ (end - stDate) + " milliseconds");
+
+        };
+    };
 
     @Test
     public void delete() {
