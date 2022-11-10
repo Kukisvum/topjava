@@ -13,8 +13,7 @@
 
 <!--    <context:component-scan base-package="ru.javawebinar.**.repository.jpa"/>-->
 
-    <context:component-scan base-package="ru.javawebinar.**.repository.datajpa"/>
-    <jpa:repositories base-package="ru.javawebinar.**.repository.datajpa"/>
+
 
     <jdbc:initialize-database data-source="dataSource" enabled="${database.init}">
         <jdbc:script location="${jdbc.initLocation}"/>
@@ -96,5 +95,7 @@
     <beans profile="jpa">
     </beans>
     <beans profile="datajpa">
+        <context:component-scan base-package="ru.javawebinar.**.repository.datajpa"/>
+        <jpa:repositories base-package="ru.javawebinar.**.repository.datajpa"/>
     </beans>
 </beans>
