@@ -1,6 +1,7 @@
 package ru.javawebinar.topjava.repository.jdbc;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -8,12 +9,14 @@ import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import ru.javawebinar.topjava.model.User;
 import ru.javawebinar.topjava.repository.UserRepository;
 
 import java.util.List;
 
 @Repository
+@Transactional(readOnly = true)
 public class JdbcUserRepository implements UserRepository {
 
     private static final BeanPropertyRowMapper<User> ROW_MAPPER = BeanPropertyRowMapper.newInstance(User.class);
@@ -35,6 +38,7 @@ public class JdbcUserRepository implements UserRepository {
     }
 
     @Override
+    @Transactional
     public User save(User user) {
         BeanPropertySqlParameterSource parameterSource = new BeanPropertySqlParameterSource(user);
 
@@ -51,12 +55,13 @@ public class JdbcUserRepository implements UserRepository {
     }
 
     @Override
+    @Transactional
     public boolean delete(int id) {
         return jdbcTemplate.update("DELETE FROM users WHERE id=?", id) != 0;
     }
 
     @Override
-    public User get(int id) {
+    public User get(int id)  {
         List<User> users = jdbcTemplate.query("SELECT * FROM users WHERE id=?", ROW_MAPPER, id);
         return DataAccessUtils.singleResult(users);
     }
@@ -70,6 +75,16 @@ public class JdbcUserRepository implements UserRepository {
 
     @Override
     public List<User> getAll() {
+        System.out.println("AFOWJNFWPOJNVWPOJVNPWOJVNWSJISJDNVISJDVNIPSJVNIOSPJVNIPSJDVN");
+        System.out.println("AFOWJNFWPOJNVWPOJVNPWOJVNWSJISJDNVISJDVNIPSJVNIOSPJVNIPSJDVN");
+        System.out.println("AFOWJNFWPOJNVWPOJVNPWOJVNWSJISJDNVISJDVNIPSJVNIOSPJVNIPSJDVN");
+        System.out.println("AFOWJNFWPOJNVWPOJVNPWOJVNWSJISJDNVISJDVNIPSJVNIOSPJVNIPSJDVN");
+        System.out.println("AFOWJNFWPOJNVWPOJVNPWOJVNWSJISJDNVISJDVNIPSJVNIOSPJVNIPSJDVN");
+        System.out.println("AFOWJNFWPOJNVWPOJVNPWOJVNWSJISJDNVISJDVNIPSJVNIOSPJVNIPSJDVN");
+        System.out.println("AFOWJNFWPOJNVWPOJVNPWOJVNWSJISJDNVISJDVNIPSJVNIOSPJVNIPSJDVN");
+        String sql = "SELECT u.id, u.name, u.email, u.registered, u.enabled, r.role" +
+                "FROM users u" +
+                "LEFT JOIN roles r ON r.user_id = r.id ";
         return jdbcTemplate.query("SELECT * FROM users ORDER BY name, email", ROW_MAPPER);
     }
 }

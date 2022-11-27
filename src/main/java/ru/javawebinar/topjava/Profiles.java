@@ -2,6 +2,8 @@ package ru.javawebinar.topjava;
 
 import org.springframework.util.ClassUtils;
 
+import javax.swing.*;
+
 public class Profiles {
     public static final String
             JDBC = "jdbc",

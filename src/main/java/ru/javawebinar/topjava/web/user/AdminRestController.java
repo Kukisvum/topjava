@@ -1,6 +1,8 @@
 package ru.javawebinar.topjava.web.user;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import ru.javawebinar.topjava.model.User;
 
 import java.util.List;
