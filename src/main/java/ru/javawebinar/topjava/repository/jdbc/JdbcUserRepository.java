@@ -75,13 +75,6 @@ public class JdbcUserRepository implements UserRepository {
 
     @Override
     public List<User> getAll() {
-        System.out.println("AFOWJNFWPOJNVWPOJVNPWOJVNWSJISJDNVISJDVNIPSJVNIOSPJVNIPSJDVN");
-        System.out.println("AFOWJNFWPOJNVWPOJVNPWOJVNWSJISJDNVISJDVNIPSJVNIOSPJVNIPSJDVN");
-        System.out.println("AFOWJNFWPOJNVWPOJVNPWOJVNWSJISJDNVISJDVNIPSJVNIOSPJVNIPSJDVN");
-        System.out.println("AFOWJNFWPOJNVWPOJVNPWOJVNWSJISJDNVISJDVNIPSJVNIOSPJVNIPSJDVN");
-        System.out.println("AFOWJNFWPOJNVWPOJVNPWOJVNWSJISJDNVISJDVNIPSJVNIOSPJVNIPSJDVN");
-        System.out.println("AFOWJNFWPOJNVWPOJVNPWOJVNWSJISJDNVISJDVNIPSJVNIOSPJVNIPSJDVN");
-        System.out.println("AFOWJNFWPOJNVWPOJVNPWOJVNWSJISJDNVISJDVNIPSJVNIOSPJVNIPSJDVN");
         String sql = "SELECT u.id, u.name, u.email, u.registered, u.enabled, r.role" +
                 "FROM users u" +
                 "LEFT JOIN roles r ON r.user_id = r.id ";
