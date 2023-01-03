@@ -30,8 +30,10 @@
     <bean class="org.springframework.format.support.FormattingConversionServiceFactoryBean" id="conversionService">
         <property name="formatters">
             <set>
+                <bean class="ru.javawebinar.topjava.web.converter.DateTimeFormatters.LocalDateTimeWithoutSecondsFormatter"/>
                 <bean class="ru.javawebinar.topjava.web.converter.DateTimeFormatters.LocalTimeFormatter"/>
                 <bean class="ru.javawebinar.topjava.web.converter.DateTimeFormatters.LocalDateFormatter"/>
+
             </set>
         </property>
     </bean>

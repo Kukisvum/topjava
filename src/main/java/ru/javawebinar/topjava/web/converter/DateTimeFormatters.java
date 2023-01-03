@@ -3,6 +3,7 @@ package ru.javawebinar.topjava.web.converter;
 import org.springframework.format.Formatter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -33,4 +34,17 @@ public class DateTimeFormatters {
             return lt.format(DateTimeFormatter.ISO_LOCAL_TIME);
         }
     }
+
+    public static class LocalDateTimeWithoutSecondsFormatter implements Formatter<LocalDateTime> {
+        @Override
+        public LocalDateTime parse(String text, Locale locale) {
+            return LocalDateTime.parse(text, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm"));
+        }
+
+        @Override
+        public String print(LocalDateTime localDate, Locale locale) {
+            return localDate.toString();
+        }
+    }
+
 }
